@@ -9,10 +9,13 @@ import net.coding.ems.service.EmployeeService;
 import org.springframework.stereotype.Service;
 
 @Service
-@AllArgsConstructor
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
+
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     @Override
     public EmployeeDto createEmployee(EmployeeDto employeeDto) {
