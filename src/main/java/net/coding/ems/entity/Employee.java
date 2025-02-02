@@ -23,6 +23,9 @@ public class Employee {
     @Column(name = "email_id", nullable = false, unique = true)
     private String email;
 
+    public Employee() {
+    }
+
     public Long getId() {
         return id;
     }
