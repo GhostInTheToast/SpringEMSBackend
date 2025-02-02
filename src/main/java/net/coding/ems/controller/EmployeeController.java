@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import net.coding.ems.dto.EmployeeDto;
 import net.coding.ems.entity.Employee;
 import net.coding.ems.service.EmployeeService;
+import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -48,5 +49,11 @@ public class EmployeeController {
                                                       @RequestBody EmployeeDto updatedEmployee){
         EmployeeDto employeeDto = employeeService.updateEmployee(employeeId, updatedEmployee);
         return ResponseEntity.ok(employeeDto);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId) {
+        employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.ok("Employee " + employeeId + " Deleted Successfully");
     }
 }
